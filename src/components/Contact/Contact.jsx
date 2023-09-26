@@ -1,6 +1,6 @@
 import React from "react";
 import "./Contact.css";
-import facebookLogo from "./images/facebook.png"; // Importa las imágenes correctamente
+import facebookLogo from "./images/facebook.png"; 
 import instagramLogo from "./images/instagram.png";
 
 const Contact = () => {

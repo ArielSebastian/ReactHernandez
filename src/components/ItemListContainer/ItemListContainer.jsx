@@ -69,7 +69,7 @@ const ItemListContainer = ({ agregarAlCarrito }) => {
                 <ProductDetail
                     producto={selectedProduct}
                     onClose={handleCloseDetalle}
-                    onAddToCart={agregarAlCarrito} // Asegúrate de que esta función se pase correctamente
+                    onAddToCart={agregarAlCarrito} 
                 />
             )}
 
