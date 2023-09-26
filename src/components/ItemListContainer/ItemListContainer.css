@@ -28,7 +28,8 @@
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.product img {
-    width: 75%;
-    height: auto;
+
+.product-image {
+    width: 200px; 
+    height: auto; 
 }
