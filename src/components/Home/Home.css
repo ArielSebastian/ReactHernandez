@@ -1,0 +1,25 @@
+.home-container {
+    text-align: center;
+    position: relative;
+}
+
+.fondo-image {
+    position: absolute;
+    width: 50%;
+    top: 100;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.galeria-container {
+    text-align: center;
+}
+
+.galeria-image {
+    display: inline-block;
+    width: 20%;
+    height: auto;
+    margin: 10px;
+}
