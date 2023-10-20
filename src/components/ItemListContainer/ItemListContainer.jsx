@@ -20,6 +20,7 @@ const ItemListContainer = ({ agregarAlCarrito }) => {
                 imagen: remera1,
                 detalles: "Detalle remera 1",
                 categoria: "Mujer",
+                precio: 10,
             },
             {
                 id: 2,
@@ -27,6 +28,7 @@ const ItemListContainer = ({ agregarAlCarrito }) => {
                 imagen: remera2,
                 detalles: "Detalle remera 2",
                 categoria: "Mujer",
+                precio: 10,
             },
             {
                 id: 3,
@@ -34,6 +36,7 @@ const ItemListContainer = ({ agregarAlCarrito }) => {
                 imagen: remera3,
                 detalles: "Detalle remera 3",
                 categoria: "Hombre",
+                precio: 10,
             },
         ];
 
@@ -62,17 +65,20 @@ const ItemListContainer = ({ agregarAlCarrito }) => {
                     <img src={producto.imagen} alt={producto.nombre} className="product-image" />
                     <p>{producto.nombre}</p>
                     <p>Categoría: {producto.categoria}</p>
-                    <button onClick={() => handleMostrarDetalles(producto)}>Detalle</button>
+                    <p>Precio: ${producto.precio.toFixed(2)}</p>
+                    <div className="product-details">
+                        <button onClick={() => handleMostrarDetalles(producto)}>Detalle</button>
+                        <button onClick={() => agregarAlCarrito(producto)}>Agregar al Carrito</button>
+                    </div>
                 </div>
             ))}
             {showDetalle && (
                 <ProductDetail
                     producto={selectedProduct}
                     onClose={handleCloseDetalle}
-                    onAddToCart={agregarAlCarrito} 
+                    onAddToCart={agregarAlCarrito}
                 />
             )}
-
         </div>
     );
 };

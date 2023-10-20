@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, Dropdown, NavDropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +7,7 @@ import "./NavBar.css";
 
 const NavBar = ({ cartItems, vaciarCarrito }) => {
     const [cartVisible, setCartVisible] = useState(false);
+    const [totalAmount, setTotalAmount] = useState(0);
     const navigate = useNavigate();
 
     const toggleCartVisibility = () => {
@@ -16,6 +17,14 @@ const NavBar = ({ cartItems, vaciarCarrito }) => {
     const handleCategoryClick = (category) => {
         navigate(`/category/${category}`);
     };
+
+    useEffect(() => {
+        const total = Object.keys(cartItems).reduce((acc, producto) => {
+            return acc + cartItems[producto].precio * cartItems[producto].cantidad;
+        }, 0);
+
+        setTotalAmount(total);
+    }, [cartItems]);
 
     return (
         <div className="app-container">
@@ -45,7 +54,8 @@ const NavBar = ({ cartItems, vaciarCarrito }) => {
                 <div className="d-flex">
                     <Dropdown alignRight show={cartVisible} onToggle={toggleCartVisibility}>
                         <Dropdown.Toggle variant="link" id="cart-dropdown">
-                            <FontAwesomeIcon icon={faShoppingCart} />
+                            <FontAwesomeIcon icon={faShoppingCart} className="cart-icon" />
+                            <span className="cart-total">${totalAmount.toFixed(2)}</span>
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="cart-dropdown">
                             {Object.keys(cartItems).length === 0 ? (

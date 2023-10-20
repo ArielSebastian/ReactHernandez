@@ -4,7 +4,11 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import "./CartWidget.css";
 
 const CartWidget = () => {
-    const itemCount = 3;
+    const { cartItems } = useCart(); 
+    const itemCount = Object.values(cartItems).reduce(
+        (total, product) => total + product.quantity,
+        0
+    );
 
     return (
         <div className="cart-widget">
